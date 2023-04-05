@@ -126,13 +126,13 @@ function Araba(isim, depoBenzin, kml) {
   this.sur = (gidilecekyol) => {
     // ✨ kodlar buraya
 
-    let checkDepo = this.depo - gidilecekyol / kml;
+    let checkDepo = this.depo - gidilecekyol / this.kml;
     if (checkDepo >= 0) {
       this.depo = checkDepo;
       this.odometer += gidilecekyol;
       return Math.round(this.odometer);
     } else {
-      const km = this.depo / kml;
+      const km = this.depo / this.kml;
       return Math.round(this.odometer + km);
     }
   };
@@ -153,10 +153,10 @@ function Araba(isim, depoBenzin, kml) {
     let checkDepo = this.depo + litre;
     if (checkDepo > this.fullDepo) {
       this.depo = this.fullDepo;
-      return this.depo * kml;
+      return this.depo * this.kml;
     } else {
       this.depo = checkDepo;
-      return this.depo * kml;
+      return this.depo * this.kml;
     }
   };
 }
