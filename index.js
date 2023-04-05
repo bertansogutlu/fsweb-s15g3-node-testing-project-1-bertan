@@ -174,8 +174,9 @@ function Araba(isim, depo, kml) {
  *    // sonuç false
  * })
  */
-function asenkronCiftSayi(sayi) {
+async function asenkronCiftSayi(sayi) {
   // ✨ implement
+  return sayi%2 === 0;
 }
 
 module.exports = {
