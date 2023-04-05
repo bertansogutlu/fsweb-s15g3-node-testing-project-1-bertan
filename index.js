@@ -95,16 +95,19 @@ function Mevsimler() {
   };
 }
 
-function Araba(/*kodlar buraya */) {
+function Araba(isim, depo, kml) {
   /**
    * [Görev 6A] Araba 3 argüman alarak bir araba nesnesi oluşturur
    * @param {string} isim - arabanın ismi
    * @param {number} depo - benzin deposu kapasitesi
    * @param {number} kml - arabanın litre başına kat edebileceği km yol
    */
+  this.isim = isim;
+  this.kml = kml;
+  this.fullDepo = depo;
 
   this.odometer = 0; // araba 0 kilometrede yüklenecek
-  this.depo = depoBenzin; // araba full depoyla yüklenecek
+  this.depo = depo; // araba full depoyla yüklenecek
   // ✨ gerekli propları ekleyin
 
   /**
@@ -122,6 +125,16 @@ function Araba(/*kodlar buraya */) {
    */
   this.sur = (gidilecekyol) => {
     // ✨ kodlar buraya
+
+    let checkDepo = this.depo - gidilecekyol / kml;
+    if (checkDepo >= 0) {
+      this.depo = checkDepo;
+      this.odometer += gidilecekyol;
+      return Math.round(this.odometer);
+    } else {
+      const km = this.depo / kml;
+      return Math.round(this.odometer + km);
+    }
   };
 
   /**
@@ -137,6 +150,14 @@ function Araba(/*kodlar buraya */) {
    */
   this.benzinal = (litre) => {
     // ✨ kodlar buraya
+    let checkDepo = this.depo + litre;
+    if (checkDepo > this.fullDepo) {
+      this.depo = this.fullDepo;
+      return this.depo * kml;
+    } else {
+      this.depo = checkDepo;
+      return this.depo * kml;
+    }
   };
 }
 
