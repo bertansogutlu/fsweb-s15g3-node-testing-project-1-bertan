@@ -95,7 +95,7 @@ function Mevsimler() {
   };
 }
 
-function Araba(isim, depo, kml) {
+function Araba(isim, depoBenzin, kml) {
   /**
    * [Görev 6A] Araba 3 argüman alarak bir araba nesnesi oluşturur
    * @param {string} isim - arabanın ismi
@@ -104,10 +104,10 @@ function Araba(isim, depo, kml) {
    */
   this.isim = isim;
   this.kml = kml;
-  this.fullDepo = depo;
+  this.fullDepo = depoBenzin;
 
   this.odometer = 0; // araba 0 kilometrede yüklenecek
-  this.depo = depo; // araba full depoyla yüklenecek
+  this.depo = depoBenzin; // araba full depoyla yüklenecek
   // ✨ gerekli propları ekleyin
 
   /**
