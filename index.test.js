@@ -68,9 +68,24 @@ describe("[Görev 5] Mevsimler", () => {
   beforeEach(() => {
     mevsimler = new utils.Mevsimler(); // her test yeni bir mevsimle başlar
   });
-  test('[9] mevsimler.sonraki İLK çağırılışında "yaz" döndürüyor', () => {});
-  test('[10] mevsimler.sonraki İKİNCİ çağırılışında "sonbahar" döndürüyor', () => {});
-  test('[11] mevsimler.sonraki ÜÇÜNCÜ çağırılışında "kış" döndürüyor', () => {});
+  test('[9] mevsimler.sonraki İLK çağırılışında "yaz" döndürüyor', () => {
+    const expected = "yaz";
+    const actual = mevsimler.sonraki()
+    expect(actual).toBe(expected);
+  });
+  test('[10] mevsimler.sonraki İKİNCİ çağırılışında "sonbahar" döndürüyor', () => {
+    const expected = "sonbahar";
+    mevsimler.sonraki()
+    const actual = mevsimler.sonraki()
+    expect(actual).toBe(expected);
+  });
+  test('[11] mevsimler.sonraki ÜÇÜNCÜ çağırılışında "kış" döndürüyor', () => {
+    const expected = "kış";
+    mevsimler.sonraki()
+    mevsimler.sonraki()
+    const actual = mevsimler.sonraki()
+    expect(actual).toBe(expected);
+  });
   test('[12] mevsimler.sonraki DÖRDÜNCÜ çağırılışında "ilkbahar" döndürüyor', () => {});
   test('[13] mevsimler.sonraki BEŞİNCİ çağırılışında "yaz" döndürüyor', () => {});
   test('[14] mevsimler.sonraki KIRKINCI çağırılışında "ilkbahar" döndürüyor', () => {});
