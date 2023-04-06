@@ -99,21 +99,42 @@ describe("[Görev 6] Araba", () => {
   beforeEach(() => {
     focus = new utils.Araba("focus", 20, 30); // her test yeni bir araba oluşturur
   });
-  test("[15] arabayı sürünce güncellenmiş odometer döndürüyor", () => {});
-  test("[16] arabayı sürmek benzin tüketiyor", () => {});
-  test("[17] benzinalma arabayı sürmeye izin veriyor", () => {});
-  test("[18] dolu depoya benzin alma etki etmiyor", () => {});
+  test("[15] arabayı sürünce güncellenmiş odometer döndürüyor", () => {
+    expect(kereYap(3,focus.sur,100)).toBe(300);
+    expect(kereYap(2,focus.sur,150)).toBe(600);
+    expect(kereYap(2,focus.sur,200)).toBe(600);
+  });
+  test("[16] arabayı sürmek benzin tüketiyor", () => {
+    expect(focus.sur(300)).toBe(300);
+    expect(focus.depo).toBe(10);
+  });
+  test("[17] benzinalma arabayı sürmeye izin veriyor", () => {
+    expect(focus.sur(600)).toBe(600);
+    expect(focus.depo).toBe(0);
+    expect(focus.sur(300)).toBe(600);
+    expect(focus.benzinal(10)).toBe(300)
+    expect(focus.sur(300)).toBe(900);
+  });
+  test("[18] dolu depoya benzin alma etki etmiyor", () => {
+    expect(focus.benzinal(10)).toBe(600)
+  });
 });
 
 describe("[Görev 7] asenkronCiftSayi", () => {
-  test("[19] bir çift sayı verilirse true çözümlüyor", () => {});
-  test("[20] tek sayı verilirse false çözümlüyor", () => {});
+  test("[19] bir çift sayı verilirse true çözümlüyor", () => {
+    utils.asenkronCiftSayi(2).then(result => {
+      expect(result).toBeTruthy()
+    })
+  });
+  test("[20] tek sayı verilirse false çözümlüyor", async () => {
+    expect(await utils.asenkronCiftSayi(1)).toBeFalsy()
+  });
 });
 
-function kereYap(kere,callback) {
+function kereYap(kere,callback,parameter) {
   let result;
   for (let index = 0; index < kere; index++) {
-    result = callback()
+    result = callback(parameter)
   }
   return result;
 }
