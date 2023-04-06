@@ -47,18 +47,12 @@ describe("[Görev 4] Sayici", () => {
   });
   test("[7] sayici.asagiSay İKİNCİ çağırılışında başlangıç eksi 1 sayıyor", () => {
     const expected = 2;
-    sayici.asagiSay()
-    const actual = sayici.asagiSay()
+    const actual = kereYap(2,sayici.asagiSay)
     expect(actual).toBe(expected);
   });
   test("[8] sayıcı sonunda sıfıra ulaşır ama daha aşağı saymaz", () => {
     const expected = 0;
-    sayici.asagiSay()
-    sayici.asagiSay()
-    sayici.asagiSay()
-    sayici.asagiSay()
-    sayici.asagiSay()
-    const actual = sayici.asagiSay()
+    const actual = kereYap(1000,sayici.asagiSay)
     expect(actual).toBe(expected);
   });
 });
@@ -75,20 +69,29 @@ describe("[Görev 5] Mevsimler", () => {
   });
   test('[10] mevsimler.sonraki İKİNCİ çağırılışında "sonbahar" döndürüyor', () => {
     const expected = "sonbahar";
-    mevsimler.sonraki()
-    const actual = mevsimler.sonraki()
+    const actual = kereYap(2,mevsimler.sonraki)
     expect(actual).toBe(expected);
   });
   test('[11] mevsimler.sonraki ÜÇÜNCÜ çağırılışında "kış" döndürüyor', () => {
     const expected = "kış";
-    mevsimler.sonraki()
-    mevsimler.sonraki()
-    const actual = mevsimler.sonraki()
+    const actual = kereYap(3,mevsimler.sonraki)
     expect(actual).toBe(expected);
   });
-  test('[12] mevsimler.sonraki DÖRDÜNCÜ çağırılışında "ilkbahar" döndürüyor', () => {});
-  test('[13] mevsimler.sonraki BEŞİNCİ çağırılışında "yaz" döndürüyor', () => {});
-  test('[14] mevsimler.sonraki KIRKINCI çağırılışında "ilkbahar" döndürüyor', () => {});
+  test('[12] mevsimler.sonraki DÖRDÜNCÜ çağırılışında "ilkbahar" döndürüyor', () => {
+    const expected = "ilkbahar";
+    const actual = kereYap(4,mevsimler.sonraki)
+    expect(actual).toBe(expected);
+  });
+  test('[13] mevsimler.sonraki BEŞİNCİ çağırılışında "yaz" döndürüyor', () => {
+    const expected = "yaz";
+    const actual = kereYap(5,mevsimler.sonraki)
+    expect(actual).toBe(expected);
+  });
+  test('[14] mevsimler.sonraki KIRKINCI çağırılışında "ilkbahar" döndürüyor', () => {
+    const expected = "ilkbahar";
+    const actual = kereYap(40,mevsimler.sonraki)
+    expect(actual).toBe(expected);
+  });
 });
 
 describe("[Görev 6] Araba", () => {
@@ -106,3 +109,11 @@ describe("[Görev 7] asenkronCiftSayi", () => {
   test("[19] bir çift sayı verilirse true çözümlüyor", () => {});
   test("[20] tek sayı verilirse false çözümlüyor", () => {});
 });
+
+function kereYap(kere,callback) {
+  let result;
+  for (let index = 0; index < kere; index++) {
+    result = callback()
+  }
+  return result;
+}
