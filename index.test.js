@@ -41,30 +41,24 @@ describe("[Görev 4] Sayici", () => {
     sayici = new utils.Sayici(3); // her test yeni bir sayı ile başlatılıyor
   });
   test("[6] sayici.asagiSay ilk çağırılışında başlangıç sayışını yapıyor", () => {
-    const input = 3;
-    const sayac = new utils.Sayici(input);
     const expected = 3;
-    const actual = sayac.asagiSay()
+    const actual = sayici.asagiSay()
     expect(actual).toBe(expected);
   });
   test("[7] sayici.asagiSay İKİNCİ çağırılışında başlangıç eksi 1 sayıyor", () => {
-    const input = 3;
-    const sayac = new utils.Sayici(input);
     const expected = 2;
-    sayac.asagiSay()
-    const actual = sayac.asagiSay()
+    sayici.asagiSay()
+    const actual = sayici.asagiSay()
     expect(actual).toBe(expected);
   });
   test("[8] sayıcı sonunda sıfıra ulaşır ama daha aşağı saymaz", () => {
-    const input = 3;
-    const sayac = new utils.Sayici(input);
     const expected = 0;
-    sayac.asagiSay()
-    sayac.asagiSay()
-    sayac.asagiSay()
-    sayac.asagiSay()
-    sayac.asagiSay()
-    const actual = sayac.asagiSay()
+    sayici.asagiSay()
+    sayici.asagiSay()
+    sayici.asagiSay()
+    sayici.asagiSay()
+    sayici.asagiSay()
+    const actual = sayici.asagiSay()
     expect(actual).toBe(expected);
   });
 });
