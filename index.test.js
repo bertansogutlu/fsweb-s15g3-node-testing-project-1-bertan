@@ -27,7 +27,12 @@ describe("[Görev 2] verileniTrimle", () => {
 });
 
 describe("[Görev 3] enBuyukTamsayiyiBul", () => {
-  test("[5] bir dizi nesne içindeki en büyük tamsayiyi döndürüyor { tamsayi: 2 }", () => {});
+  test("[5] bir dizi nesne içindeki en büyük tamsayiyi döndürüyor { tamsayi: 2 }", () => {
+    const input = [{ tamsayi: 1 }, { tamsayi: 3 }, { tamsayi: 2 }, { tamsayi: 100 }, { tamsayi: -200 }]
+    const expected = 100;
+    const actual = utils.enBuyukTamsayiyiBul(input);
+    expect(actual).toBe(expected);
+  });
 });
 
 describe("[Görev 4] Sayici", () => {
@@ -35,8 +40,16 @@ describe("[Görev 4] Sayici", () => {
   beforeEach(() => {
     sayici = new utils.Sayici(3); // her test yeni bir sayı ile başlatılıyor
   });
-  test("[6] sayici.asagiSay ilk çağırılışında başlangıç sayışını yapıyor", () => {});
-  test("[7] sayici.asagiSay İKİNCİ çağırılışında başlangıç eksi 1 sayıyor", () => {});
+  test("[6] sayici.asagiSay ilk çağırılışında başlangıç sayışını yapıyor", () => {
+    const input = 3;
+    const sayac = new utils.Sayici(input);
+    const expected = 3;
+    const actual = sayac.asagiSay()
+    expect(actual).toBe(expected);
+  });
+  test("[7] sayici.asagiSay İKİNCİ çağırılışında başlangıç eksi 1 sayıyor", () => {
+   
+  });
   test("[8] sayıcı sonunda sıfıra ulaşır ama daha aşağı saymaz", () => {});
 });
 
