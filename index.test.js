@@ -48,9 +48,24 @@ describe("[Görev 4] Sayici", () => {
     expect(actual).toBe(expected);
   });
   test("[7] sayici.asagiSay İKİNCİ çağırılışında başlangıç eksi 1 sayıyor", () => {
-   
+    const input = 3;
+    const sayac = new utils.Sayici(input);
+    const expected = 2;
+    sayac.asagiSay()
+    const actual = sayac.asagiSay()
+    expect(actual).toBe(expected);
   });
   test("[8] sayıcı sonunda sıfıra ulaşır ama daha aşağı saymaz", () => {});
+  const input = 3;
+  const sayac = new utils.Sayici(input);
+  const expected = 0;
+  sayac.asagiSay()
+  sayac.asagiSay()
+  sayac.asagiSay()
+  sayac.asagiSay()
+  sayac.asagiSay()
+  const actual = sayac.asagiSay()
+  expect(actual).toBe(expected);
 });
 
 describe("[Görev 5] Mevsimler", () => {
