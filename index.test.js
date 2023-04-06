@@ -55,17 +55,18 @@ describe("[Görev 4] Sayici", () => {
     const actual = sayac.asagiSay()
     expect(actual).toBe(expected);
   });
-  test("[8] sayıcı sonunda sıfıra ulaşır ama daha aşağı saymaz", () => {});
-  const input = 3;
-  const sayac = new utils.Sayici(input);
-  const expected = 0;
-  sayac.asagiSay()
-  sayac.asagiSay()
-  sayac.asagiSay()
-  sayac.asagiSay()
-  sayac.asagiSay()
-  const actual = sayac.asagiSay()
-  expect(actual).toBe(expected);
+  test("[8] sayıcı sonunda sıfıra ulaşır ama daha aşağı saymaz", () => {
+    const input = 3;
+    const sayac = new utils.Sayici(input);
+    const expected = 0;
+    sayac.asagiSay()
+    sayac.asagiSay()
+    sayac.asagiSay()
+    sayac.asagiSay()
+    sayac.asagiSay()
+    const actual = sayac.asagiSay()
+    expect(actual).toBe(expected);
+  });
 });
 
 describe("[Görev 5] Mevsimler", () => {
